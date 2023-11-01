@@ -1,6 +1,6 @@
 import tkinter as tk
-from cifrado_cesar import cifrado_cesar, descifrado_cesar
-from cifrado_atbash import cifrado_atbash
+from tp_P1 import cifrado_cesar, descifrado_cesar
+from tp_P2 import cifrado_atbash
 
 # --- Creamos la funcion para la ventana principal
 
