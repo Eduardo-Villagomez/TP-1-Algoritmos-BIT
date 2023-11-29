@@ -26,16 +26,17 @@ def cifrado_cesar(mensaje, clave):
     caracteres_invalidos = "áéíóúÁÉÍÓÚ"
     cifrado = ''
     for caracter in mensaje:
-        if caracter.isalpha():
-            if caracter not in caracteres_invalidos:
-                base = ord('a') if caracter.islower() else ord('A')
-                cifrado += chr((ord(caracter) - base + clave) % 26 + base)
-            else:
-                cifrado += caracter
+
+        if caracter.isalpha() and caracter not in caracteres_invalidos:
+            base = ord('a') if caracter.islower() else ord('A')
+            cifrado += chr((ord(caracter) - base + clave) % 26 + base)
+
         elif caracter.isdigit():
             cifrado += str((int(caracter) + clave) % 10)
+
         else:
             cifrado += caracter
+            
     return cifrado
 
 def descifrado_cesar(mensaje_cifrado, clave):
@@ -64,7 +65,3 @@ def descifrado_cesar(mensaje_cifrado, clave):
     'La respuesta es 42.'
     """
     return cifrado_cesar(mensaje_cifrado, -clave)
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testmod()

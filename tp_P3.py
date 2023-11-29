@@ -34,22 +34,11 @@ def ventana_bienvenida():
     ventana_bienvenida.mainloop()
 
 def ventana_mensajes():
-    def decifrar_cesar():
-        mensaje = entrada_mensaje.get()
-        clave = int(entrada_clave.get())
-        mensaje_cifrado = descifrado_cesar(mensaje, clave)
-        label_resultado.config(text=mensaje_cifrado)
+    fun_decifrar_cesar = lambda: label_resultado.config(text=descifrado_cesar(entrada_mensaje.get(),int(entrada_clave.get())))
 
-    def cifrar_cesar():
-        mensaje = entrada_mensaje.get()
-        clave = int(entrada_clave.get())
-        mensaje_cifrado = cifrado_cesar(mensaje, clave)
-        label_resultado.config(text=mensaje_cifrado)
-
-    def cifrar_atbash():
-        mensaje = entrada_mensaje.get()
-        mensaje_cifrado = cifrado_atbash(mensaje)
-        label_resultado.config(text=mensaje_cifrado)
+    fun_cifrar_cesar = lambda: label_resultado.config(text=cifrado_cesar(entrada_mensaje.get(),int(entrada_clave.get())))
+    
+    fun_cifrado_atbash = lambda: label_resultado.config(text=cifrado_atbash(entrada_mensaje.get()))
 
     ventana_mensajes = tk.Tk()
     ventana_mensajes.resizable(0, 0)
@@ -70,23 +59,23 @@ def ventana_mensajes():
     entrada_clave = tk.Entry(ventana_mensajes)
     entrada_clave.pack()
 
-    boton_cifrar_cesar = tk.Button(ventana_mensajes, text="Cifrar mensaje César", command=cifrar_cesar)
+    boton_cifrar_cesar = tk.Button(ventana_mensajes, text="Cifrar mensaje César", command=fun_cifrar_cesar)
     boton_cifrar_cesar.config(bg="orange")
     boton_cifrar_cesar.pack(padx=5,pady=10)
 
-    boton_cifrar_atbash = tk.Button(ventana_mensajes, text="Cifrar mensaje Atbash", command=cifrar_atbash)
+    boton_cifrar_atbash = tk.Button(ventana_mensajes, text="Cifrar mensaje Atbash", command=fun_cifrado_atbash)
     boton_cifrar_atbash.config(bg="orange")
     boton_cifrar_atbash.pack(padx=5,pady=5)
 
-    boton_descifrar_cesar = tk.Button(ventana_mensajes, text="Descifrar mensaje César", command=decifrar_cesar)
+    boton_descifrar_cesar = tk.Button(ventana_mensajes, text="Descifrar mensaje César", command=fun_decifrar_cesar)
     boton_descifrar_cesar.config(bg="orange")
     boton_descifrar_cesar.pack(padx=5,pady=10)
 
-    boton_descifrar_atbash = tk.Button(ventana_mensajes, text="Descifrar mensaje Atbash", command=cifrar_atbash)
+    boton_descifrar_atbash = tk.Button(ventana_mensajes, text="Descifrar mensaje Atbash", command=fun_cifrado_atbash)
     boton_descifrar_atbash.config(bg="orange")
     boton_descifrar_atbash.pack(padx=5,pady=10)
 
-    label_resultado = tk.Label(ventana_mensajes, text="")
+    label_resultado = tk.Label(ventana_mensajes, text="",font=("Comic sans MS",12))
     label_resultado.config(bg="navajo white")
     label_resultado.pack()
 
